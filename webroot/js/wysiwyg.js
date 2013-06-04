@@ -41,8 +41,9 @@ Croogo.Wysiwyg.choose = function(url, title, description) {
 		title_field.value = title;
 	}
 
-	field = window.top.opener.browserWin.document.forms[0].elements[window.top.opener.browserField];
+	field = window.top.opener.browserWin.document.getElementById(window.top.opener.browserField);
 	field.value = url;
+	
 	if (field.onchange != null) {
 		field.onchange();
 	}
@@ -53,7 +54,7 @@ Croogo.Wysiwyg.choose = function(url, title, description) {
 /**
  * This function is responsible for integrating attachments/file browser in the editor.
  */
-Croogo.Wysiwyg.browser = function(field_name, url, type, win) {
+Croogo.Wysiwyg.browser = function() {
   window.fileBrowserCallback = function(field_name, url, type, win) {
 		browserField = field_name;
 		browserWin = win;

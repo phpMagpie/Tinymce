@@ -96,14 +96,18 @@ class TinymceHelper extends AppHelper {
  * @return void
  */
 	public function beforeRender($viewFile) {
+		$this->Html->script(array('/Tinymce/js/wysiwyg'), array('inline' => false));
+		
 		if (is_array(Configure::read('Wysiwyg.actions'))) {
 			$this->actions = Hash::merge($this->actions, Configure::read('Wysiwyg.actions'));
 		}
 		$action = Inflector::camelize($this->params['controller']) . '/' . $this->params['action'];
 		if (Configure::read('Writing.wysiwyg') && isset($this->actions[$action])) {
-			$this->Html->script(array('/Tinymce/js/tinymce.min','/Tinymce/js/wysiwyg'), array('inline' => false));
+			$this->Html->script(array('/Tinymce/js/tinymce.min'), array('inline' => false));
 			
 			$this->_CroogoPlugin = new CroogoPlugin();
+			
+			// setup file manager part1
 			if($this->_CroogoPlugin->isActive('el_finder')) {
 				$this->Html->css(
 				  array('http://code.jquery.com/ui/1.8.18/themes/smoothness/jquery-ui.css', '/ElFinder/elfinder/css/elfinder.min'),
@@ -114,10 +118,16 @@ class TinymceHelper extends AppHelper {
 			
 			$settings = $this->getSettings();
 			foreach ($settings as $setting) {
+			  // setup file manager part2
 			  if($this->_CroogoPlugin->isActive('el_finder')) {
 			  	$setting['plugins'] = $setting['plugins'] . ' elfinder';
+			  } else {
+			    $setting['file_browser_callback'] = "fileBrowserCallback";
 			  }
-				$this->Html->scriptBlock('tinymce.init(' . $this->Js->object($setting) . ');', array('inline' => false));
+			  
+				$this->Html->scriptBlock('$(document).ready(function() {
+				  tinymce.init(' . str_replace('"fileBrowserCallback"', 'fileBrowserCallback', $this->Js->object($setting)) . ');
+				});', array('inline' => false));
 			}
 		}
 	}
