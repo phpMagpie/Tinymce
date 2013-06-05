@@ -114,6 +114,10 @@ class TinymceHelper extends AppHelper {
 				  null, array('inline' => false)
 				);
 				$this->Html->script(array('/ElFinder/elfinder/js/tinymce.plugin'), array('inline' => false));
+			} elseif ($this->_CroogoPlugin->isActive('moxie_manager')) {
+  			$this->Html->scriptBlock('$(document).ready(function() {
+  			  tinymce.PluginManager.load("moxiemanager", "/MoxieManager/plugin.min.js");
+  			});', array('inline' => false));
 			}
 			
 			$settings = $this->getSettings();
@@ -121,6 +125,8 @@ class TinymceHelper extends AppHelper {
 			  // setup file manager part2
 			  if($this->_CroogoPlugin->isActive('el_finder')) {
 			  	$setting['plugins'] = $setting['plugins'] . ' elfinder';
+			  } elseif($this->_CroogoPlugin->isActive('moxie_manager')) {
+			  	$setting['plugins'] = $setting['plugins'] . ' moxiemanager';
 			  } else {
 			    $setting['file_browser_callback'] = "fileBrowserCallback";
 			  }
