@@ -1,28 +1,66 @@
-//Croogo.Wysiwyg.Tinymce = {
-//
-//	setup: function(el, config) {
-//		var preset = null;
-//		var defaults = {
-//		  selector: el
-//		};
-//		if (config.preset === false) {
-//			delete config.preset;
-//		} else {
-//			if (typeof config.preset == 'undefined') {
-//				config.preset = 'standard';
-//			}
-//			preset = Croogo.Wysiwyg.Tinymce.presets[config.preset];
-//			delete config.preset;
-//		}
-//		$.extend(defaults, preset);
-//		$.extend(defaults, config);
-//		$.extend(config, defaults);
-//		console.log(config);
-//	  
-//	  tinymce.init(config);
-//	}
-//
-//}
+Croogo.Wysiwyg.Tinymce = {
+
+	presets: {
+
+		basic: {},
+
+		standard: {
+		  mode: 'exact',
+		  relative_urls: false,
+		  plugins: 'advlist paste searchreplace spellchecker link anchor autolink image table charmap fullscreen code',
+		  tools: 'inserttable',
+		  toolbar: 'undo redo | searchreplace spellchecker | bold italic underline strikethrough remove format | bullist numlist outdent indent blockquote hr | link unlink anchor',
+		  style_formats: [
+		    {
+		      title: 'Image Left',
+		      selector: 'img',
+		      styles: [{
+		        float: 'left',
+		        margin: '0 10px 0 10px'
+		      }]
+		    },
+		    {
+		      title: 'Image Right',
+		      selector: 'img',
+		      styles: [{
+		        float: 'right',
+		        margin: '0 10px 0 10px'
+		      }]
+		    }
+		  ]
+		},
+
+		full: {}
+	},
+
+	setup: function(el, config) {
+		var preset = null;
+		var defaults = {
+		  elements: el
+		};
+		if (config.preset === false) {
+			delete config.preset;
+		} else {
+			if (typeof config.preset == 'undefined') {
+				config.preset = 'standard';
+			}
+			preset = Croogo.Wysiwyg.Tinymce.presets[config.preset];
+			delete config.preset;
+		}
+		if (config.extra_plugins !== 'undefined') {
+			preset.plugins = preset.plugins + ' ' + config.extra_plugins;
+			delete config.extra_plugins;
+		}
+		$.extend(defaults, preset);
+		$.extend(defaults, config);
+		$.extend(config, defaults);
+    
+		config.file_browser_callback = fileBrowserCallback;
+			  
+	  tinymce.init(config);
+	}
+
+}
 
 /**
  * This function is called when you select an image file to be inserted in your editor.
