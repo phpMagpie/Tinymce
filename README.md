@@ -1,11 +1,9 @@
 # TinyMCE
 
-Plugin for integrating [TinyMCE v4](http://tinymce.com/) into [Croogo](http://croogo.org).
+Plugin for integrating [TinyMCE v4](http://tinymce.com/) into [Croogo](http://croogo.org). Requires Croogo v1.5 or higher.  
 
-Requires Croogo v1.5 or higher.  
-
-Also, if you install this and my [elFinder plugin](https://github.com/phpMagpie/ElFinder) it will 
-automatically set TinyMCE's image/file browser to use elFinder.
+My [elFinder](https://github.com/phpMagpie/ElFinder) and [MoxieManager](https://github.com/phpMagpie/MoxieManager) plugins 
+automatically reconfigure TinyMCE's image/file browser to use them rather than the core FileManager::attachments.
 
 ## Installation
 
