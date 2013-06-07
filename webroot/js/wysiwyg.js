@@ -10,24 +10,6 @@ Croogo.Wysiwyg.Tinymce = {
 		  plugins: 'advlist paste searchreplace spellchecker link anchor autolink image table charmap fullscreen code',
 		  tools: 'inserttable',
 		  toolbar: 'undo redo | searchreplace spellchecker | bold italic underline strikethrough remove format | bullist numlist outdent indent blockquote hr | link unlink anchor',
-		  style_formats: [
-		    {
-		      title: 'Image Left',
-		      selector: 'img',
-		      styles: [{
-		        float: 'left',
-		        margin: '0 10px 0 10px'
-		      }]
-		    },
-		    {
-		      title: 'Image Right',
-		      selector: 'img',
-		      styles: [{
-		        float: 'right',
-		        margin: '0 10px 0 10px'
-		      }]
-		    }
-		  ]
 		},
 
 		full: {}
