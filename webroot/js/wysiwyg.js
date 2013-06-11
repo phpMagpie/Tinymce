@@ -29,7 +29,7 @@ Croogo.Wysiwyg.Tinymce = {
 			preset = Croogo.Wysiwyg.Tinymce.presets[config.preset];
 			delete config.preset;
 		}
-		if (config.extra_plugins !== 'undefined') {
+		if (typeof config.extra_plugins != 'undefined') {
 			preset.plugins = preset.plugins + ' ' + config.extra_plugins;
 			delete config.extra_plugins;
 		}

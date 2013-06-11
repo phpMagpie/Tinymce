@@ -62,7 +62,8 @@ class TinymceHelper extends AppHelper {
 			foreach ($actionItems as $actionItem) {
 				$element = $actionItem['elements'];
 				unset($actionItem['elements']);
-				$config = array_merge(Configure::read('Tinymce.defaults'), $actionItem);
+				$defaults = Configure::read('Tinymce.defaults') ? Configure::read('Tinymce.defaults') : array();
+				$config = array_merge($defaults, $actionItem);
 				$config = empty($config) ? '{}' : $this->Js->object($config);
 				$out .= sprintf(
 					'Croogo.Wysiwyg.Tinymce.setup("%s", %s);',
