@@ -7,9 +7,10 @@ Croogo.Wysiwyg.Tinymce = {
 		standard: {
 		  mode: 'exact',
 		  relative_urls: false,
-		  plugins: 'advlist paste searchreplace spellchecker link anchor autolink image table charmap fullscreen code',
+		  plugins: 'advlist paste searchreplace spellchecker link anchor autolink image table charmap fullscreen code syntaxhl',
 		  tools: 'inserttable',
-		  toolbar: 'undo redo | searchreplace spellchecker | bold italic underline strikethrough remove format | bullist numlist outdent indent blockquote hr | link unlink anchor',
+		  toolbar: 'undo redo | searchreplace spellchecker | bold italic underline strikethrough remove syntaxhl | bullist numlist outdent indent blockquote hr | link unlink anchor',
+		  extended_valid_elements: '#span[id|class],#a[href|target|title|id|class|data-slide]',
 		},
 
 		full: {}
