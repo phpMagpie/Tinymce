@@ -7,7 +7,7 @@ Croogo.Wysiwyg.Tinymce = {
 		standard: {
 		  mode: 'exact',
 		  relative_urls: false,
-		  plugins: 'advlist paste searchreplace spellchecker link anchor autolink image table charmap fullscreen code syntaxhl',
+		  plugins: 'advlist paste searchreplace spellchecker link anchor autolink image table charmap fullscreen code',
 		  tools: 'inserttable',
 		  toolbar: 'undo redo | searchreplace spellchecker | bold italic underline strikethrough remove syntaxhl | bullist numlist outdent indent blockquote hr | link unlink anchor',
 		  extended_valid_elements: '#span[id|class],#a[href|target|title|id|class|data-slide]',
@@ -70,6 +70,18 @@ Croogo.Wysiwyg.choose = function(url, title, description) {
 	}
 	window.top.close();
 	window.top.opener.browserWin.focus();
+}
+
+/**
+ * Returns boolean value to indicate an editor within the page has been modified
+ */
+Croogo.Wysiwyg.isDirty = function() {
+}
+
+/**
+ * Reset dirty indicator for all editors in the page
+ */
+Croogo.Wysiwyg.resetDirty = function() {
 }
 
 /**
