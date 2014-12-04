@@ -2,6 +2,10 @@
 
 Plugin for integrating [TinyMCE v4](http://tinymce.com/) into [Croogo](http://croogo.org). Requires Croogo v1.5 or higher.  
 
+Packaged with TinyMCE version 4.0b2.  
+
+I have used this with Croogo versions 1.5.x, 1.6.x, 2.0.x, 2.1.x
+
 Note: My [elFinder](https://github.com/phpMagpie/ElFinder) and [MoxieManager](https://github.com/phpMagpie/MoxieManager) plugins 
 automatically reconfigure TinyMCE's image/file browser to use them rather than the core FileManager::attachments.
 
